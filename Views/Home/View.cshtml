@@ -1,0 +1,256 @@
+﻿@using ProjectManagement.Models
+
+@model ProjectManagement.Models.Company
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/Content/assets/images/favicon.png")">
+    <title>Monster Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="@Url.Content("~/Content/assets/plugins/bootstrap/css/bootstrap.min.css")" rel=" stylesheet">
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="@Url.Content("~/Content/css/colors/blue.css")" id="theme" rel="stylesheet">
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <div id="main-wrapper">
+        <header class="topbar is_stuck" style="position: fixed; top: 0px; width: 1349px;">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon -->
+                        <b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <h3 class="dark-logo">PiedPiper Admin</h3>
+
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto mt-md-0 ">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item hidden-sm-down">
+                            <form class="app-search p-l-20">
+                                <input type="text" class="form-control" placeholder="Search for..."> <a class="srh-btn"><i class="ti-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+                <div class="scroll-sidebar" style="overflow: hidden; width: auto; height: 100%;">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav active">
+                        <ul id="sidebarnav" class="in">
+                            <li class="active">
+                                @Html.ActionLink("Dashboard", "DashBoard", new { @class = "waves-effect" })
+                            </li>
+                            <li>
+                                <i class="fa fa-user m-r-10" aria-hidden="true"></i>@Html.ActionLink("Companies", "Companies", new { @class = "waves-effect active" })
+                            </li>
+                            <li>
+                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Clients", "Clients", new { @class = "waves-effect" })
+                            </li>
+                            <li>
+                                <i class="fa fa-user m-r-10" aria-hidden="true"></i>@Html.ActionLink("Projects", "Projects", new { @class = "waves-effect" })
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div><div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; left: 1px; height: 93.1843px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; left: 1px;"></div>
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper" style="min-height: 217px;">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Profile</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
+                    </div>
+                    
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-block">
+                                <center class="m-t-30">
+                                    @{var base64 = Convert.ToBase64String(Model.image);
+                                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src='@imgSrc' class="img-circle" width="150">
+                                    <h4 class="card-title m-t-10">@Model.companyName</h4>
+                                    <h6 class="card-subtitle">@Model.companyType</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <span style="font-size:15px;">Total Projects:</span><div class="col-4"><a href="javascript:void(0)" class="link"> <font class="font-medium">@Model.totalProjects</font></a></div>
+                                        <span style="font-size:15px;">Pending Projects:</span><div class="col-4"><a href="javascript:void(0)" class="link"> <font class="font-medium">@Model.pendingProjects</font></a></div>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-block">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="font-weight:700;">CEO</label>
+                                        <div class="col-md-12">
+                                            @Html.Label("StudentName", @Model.ceoName)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="font-weight:700;">Email</label>
+                                        <div class="col-md-12">
+                                            @Html.Label("Emaill", @Model.email)
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label class="col-md-12" style="font-weight:700;">Phone No</label>
+                                        <div class="col-md-12">
+                                            @Html.Label("phone", @Model.phoneNumber)
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-12" style="font-weight:700;">HeadQuarters</label>
+                                        <div class="col-sm-12">
+                                            @Html.Label("Emaill", @Model.headquarters)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">              
+                                            <input type="button" value="Back" onclick="location.href='@Url.Action("Companies", "Home")'" class="btn btn-success" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->          
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            © 2017 Client Manager by Sharath Kumar
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- Flot Charts JavaScript -->
+    <script src="../assets/plugins/flot/jquery.flot.js"></script>
+    <script src="../assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="js/flot-data.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="../assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+
+
+</html>
