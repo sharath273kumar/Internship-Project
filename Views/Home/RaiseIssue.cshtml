@@ -1,10 +1,11 @@
 ﻿@using ProjectManagement.Models
 
-@model ProjectManagement.Models.Client
+@model ProjectManagement.Models.Tracking
 
 @{
-    ViewBag.Title = "AddClient";
+    ViewBag.Title = "RaiseIssue";
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,14 +99,14 @@
                             <li>
                                 <i class="fa fa-user m-r-10" aria-hidden="true"></i>@Html.ActionLink("Companies", "Companies", new { @class = "waves-effect" })
                             </li>
-                            <li class="active">
-                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Clients", "Clients", new { @class = "waves-effect active" })
+                            <li>
+                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Clients", "Clients", new { @class = "waves-effect" })
                             </li>
                             <li>
                                 <i class="fa fa-user m-r-10" aria-hidden="true"></i>@Html.ActionLink("Projects", "Projects", new { @class = "waves-effect" })
                             </li>
-                            <li>
-                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Tracking", "Track", new { @class = "waves-effect" })
+                            <li class="active">
+                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Tracking", "Track", new { @class = "waves-effect active" })
                             </li>
                         </ul>
 
@@ -155,67 +156,50 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-block">
-                                @using(Html.BeginForm("AddClient", "Home", FormMethod.Post, new { @class = "form-horizontal form-material", enctype = "multipart/form-data" }))
+                                @using (Html.BeginForm("RaiseIssue", "Home", FormMethod.Post, new { @class = "form-horizontal form-material", enctype = "multipart/form-data" }))
                                 {
-                                <form>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Client Name</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.clientName, new { @class = "form-control form-control-line" })
+                                    <form>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Traking ID</label>
+                                            <div class="col-md-12">
+                                                @Html.TextBoxFor(x => x.trackId, new { @class = "form-control form-control-line" })
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Client ID</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.clientId, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.phoneNumber, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.email, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Total Project Record</label>
-                                        <div class="col-sm-12">
-                                            @Html.TextBoxFor(x => x.totalProject, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Pending Projects</label>
-                                        <div class="col-sm-12">
-                                            @Html.TextBoxFor(x => x.pendingProject, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Partner Company Id</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.partnerCompanyId, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Deadline</label>
-                                        <div class="col-md-12">
-                                            @Html.TextBoxFor(x => x.submissionDate, new { @class = "form-control form-control-line" })
-                                        </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Project ID</label>
+                                            <div class="col-md-12">
+                                                @Html.TextBoxFor(x => x.projectId, new { @class = "form-control form-control-line" })
+                                            </div>
+                                        </div>                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-12">Type<br /><br /></label>
+                                            <div class="col-sm-12">
+                                                @Html.RadioButtonFor(x => x.type,"New", new { @class = "form-control-line" }) New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                @Html.RadioButtonFor(x => x.type, "Issue", new { @class = "form-control-line" }) Issue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                @Html.RadioButtonFor(x => x.type, "Impovement", new { @class = "form-control-line" }) Improvement
 
-                                    
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <input type="submit" value="Add" class="btn btn-success" />
-                                            <input type="button" value="Cancel" onclick="location.href='@Url.Action("Clients", "Home")'" class="btn pull-right hidden-sm-down btn-success" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">Issue</label>
+                                            <div class="col-sm-12">
+                                                @Html.TextAreaFor(x => x.issue, new { @class = "form-control form-control-line" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-12">Remarks</label>
+                                            <div class="col-sm-12">
+                                                @Html.TextAreaFor(x => x.remark, new { @class = "form-control form-control-line" })
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <input type="submit" value="Add" class="btn btn-success" />
+                                                <input type="button" value="Cancel" onclick="location.href='@Url.Action("Track", "Home")'" class="btn pull-right hidden-sm-down btn-success" />
+                                            </div>
+                                        </div>
+                                    </form>
 
                                 }
                                 <!--Form Close-->

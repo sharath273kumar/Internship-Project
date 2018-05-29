@@ -26,6 +26,8 @@
     <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="@Url.Content("~/Content/css/colors/blue.css")" id="theme" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 </head>
 <body class="fix-header fix-sidebar card-no-border">
     <div id="main-wrapper">
@@ -93,6 +95,9 @@
                             </li>
                             <li class="active">
                                 <i class="fa fa-user m-r-10" aria-hidden="true"></i>@Html.ActionLink("Projects", "Projects", new { @class = "waves-effect active" })
+                            </li>
+                            <li>
+                                <i class="fa fa-table m-r-10" aria-hidden="true"></i>@Html.ActionLink("Tracking", "Track", new { @class = "waves-effect" })
                             </li>
 
                         </ul>
@@ -166,7 +171,7 @@
 
                                 </div>
                                 <div class="table-responsive m-t-40">
-                                    <table class="table stylish-table">
+                                    <table class="table stylish-table" id="table_id">
                                         <thead>
                                             <tr>
                                                 <th>Project Name</th>
@@ -183,9 +188,9 @@
                                             {
                                                 <tr>
                                                     <td>@pro.projectName</td>
-                                                    <td>@pro.deadline</td>
+                                                    <td>@pro.deadline.ToString("dd/MM/yyyy")</td>
                                                     <td>@pro.status</td>
-                                                    <td>@pro.budget</td>
+                                                    <td>$@pro.budget</td>
                                                     <td>@Html.ActionLink("UpdateStatus", "Update", new { id = @pro.projectId })</td>
                                                 </tr>
                                             }
