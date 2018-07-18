@@ -1,2 +1,2 @@
 # Internship-Project
-A web Application to manage all your clients and there projects
+A CMR web Application to manage all the clients their information and the respective projects
